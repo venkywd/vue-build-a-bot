@@ -9,7 +9,6 @@
     </header>
     <main>
       <RobotBuilder />
-
     </main>
   </div>
 </template>
@@ -32,6 +31,7 @@ body {
   background-attachment: fixed;
 }
 </style>
+
 <style scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
