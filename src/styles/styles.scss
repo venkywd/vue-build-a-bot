@@ -1,0 +1,13 @@
+@mixin top-row {
+  display: flex;
+  justify-content: space-around;
+}
+@mixin middle-row {
+  display: flex;
+  justify-content: center;
+}
+@mixin bottom-row {
+  display: flex;
+  justify-content: space-around;
+  border-top: none;
+}

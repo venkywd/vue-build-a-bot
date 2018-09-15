@@ -1,21 +1,6 @@
 <template>
   <div class="content">
-    <div class="preview">
-      <div class="preview-content">
-        <div class="top-row">
-          <img :src="selectedRobot.head.src" />
-        </div>
-        <div class="middle-row">
-          <img :src="selectedRobot.leftArm.src" class="rotate-left" />
-          <img :src="selectedRobot.torso.src" />
-          <img :src="selectedRobot.rightArm.src" class="rotate-right" />
-        </div>
-        <div class="bottom-row">
-          <img :src="selectedRobot.base.src" />
-        </div>
-      </div>
-      <button @click="addToCart()" class="add-to-cart">Add to Cart</button>
-    </div>
+    <PreviewCart :selectedRobot="selectedRobot" @addToCart="addToCart()" />
 
     <div class="top-row">
       <PartSelector :parts="availableParts.heads" position="top" @partSelected="part => selectedRobot.head = part" />
@@ -52,6 +37,7 @@
 import availableParts from '../data/parts';
 import createdHookedMixin from './created-hook.mixin';
 import PartSelector from './PartSelector';
+import PreviewCart from './PreviewCart';
 
 export default {
   name: 'RobotBuilder',
@@ -68,7 +54,7 @@ export default {
       },
     };
   },
-  components: { PartSelector },
+  components: { PartSelector, PreviewCart },
   mixins: [createdHookedMixin],
   beforeCreate() {
     console.log('*** lifecycle: beforeCreate');
@@ -116,15 +102,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/styles.scss';
+
 .content {
   position: relative;
-}
-.add-to-cart {
-  position: absolute;
-  // right: 30px;
-  width: 210px;
-  padding: 3px;
-  font: 16px;
 }
 .robot-name {
   position: absolute;
@@ -141,18 +122,15 @@ export default {
     width: 165px;
   }
 }
+
 .top-row {
-  display: flex;
-  justify-content: space-around;
+  @include top-row;
 }
 .middle-row {
-  display: flex;
-  justify-content: center;
+  @include middle-row;
 }
 .bottom-row {
-  display: flex;
-  justify-content: space-around;
-  border-top: none;
+  @include bottom-row;
 }
 .head {
   border-bottom: none;
@@ -235,26 +213,5 @@ th {
 }
 .sale-border {
   border: 3px solid red;
-}
-.preview {
-  position: absolute;
-  top: -20px;
-  right: 0;
-  width: 210px;
-  height: 210px;
-  padding: 5px;
-}
-.preview-content {
-  border: 1px solid #999;
-}
-.preview img {
-  width: 50px;
-  height: 50px;
-}
-.rotate-right {
-  transform: rotate(90deg);
-}
-.rotate-left {
-  transform: rotate(-90deg);
 }
 </style>
