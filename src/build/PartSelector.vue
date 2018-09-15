@@ -57,10 +57,16 @@ export default {
       this.$emit('partSelected', this.selectedPart);
     },
     selectNextPart() {
-      this.selectedPartIndex = getNextValidIndex(this.selectedPartIndex, this.parts.length);
+      this.selectedPartIndex = getNextValidIndex(
+        this.selectedPartIndex,
+        this.parts.length
+      );
     },
     selectPreviousPart() {
-      this.selectedPartIndex = getPreviousValidIndex(this.selectedPartIndex, this.parts.length);
+      this.selectedPartIndex = getPreviousValidIndex(
+        this.selectedPartIndex,
+        this.parts.length
+      );
     },
   },
 };
