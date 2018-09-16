@@ -1,7 +1,6 @@
 <template>
-  <div class="content">
+  <div class="content" v-if="availableParts">
     <PreviewCart :selectedRobot="selectedRobot" @addToCart="addToCart()" />
-
     <div class="top-row">
       <PartSelector :parts="availableParts.heads" position="top" @partSelected="part => selectedRobot.head = part" />
     </div>
@@ -17,16 +16,16 @@
 </template>
 
 <script>
-import availableParts from '../data/parts';
+// import availableParts from '../data/parts';
 import createdHookedMixin from './created-hook.mixin';
-import PartSelector from './PartSelector';
-import PreviewCart from './PreviewCart';
+import PartSelector from './PartSelector.vue';
+import PreviewCart from './PreviewCart.vue';
 
 export default {
   name: 'RobotBuilder',
   data() {
     return {
-      availableParts,
+      // availableParts,
       cart: [],
       selectedRobot: {
         head: {},
@@ -53,9 +52,9 @@ export default {
   beforeCreate() {
     console.log('*** lifecycle: beforeCreate');
   },
-  // created() {
-  //   console.log('*** lifecycle: created');
-  // },
+  created() {
+    this.$store.dispatch('getParts');
+  },
   beforeMounted() {
     console.log('*** lifecycle: beforeMounte');
   },
@@ -76,6 +75,9 @@ export default {
   },
 
   computed: {
+    availableParts() {
+      return this.$store.state.parts;
+    },
     saleBorderClass() {
       return this.selectedRobot.head.onSale ? 'sale-border' : '';
     },
@@ -87,6 +89,7 @@ export default {
       };
     },
   },
+
   methods: {
     addToCart() {
       const robot = this.selectedRobot;

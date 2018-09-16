@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import RobotBuilder from '../build/RobotBuilder.vue';
 import ShoppingCart from '../cart/ShoppingCart.vue';
 import HomePage from '../home/HomePage.vue';
+import NotFound from '../not-found/NotFound.vue';
 import BrowseParts from '../parts/BrowseParts.vue';
 import PartInfo from '../parts/PartInfo.vue';
 import RobotArms from '../parts/RobotArms.vue';
@@ -14,7 +15,7 @@ import SidebarStandard from '../sidebars/SidebarStandard.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -75,5 +76,18 @@ export default new Router({
       name: 'Cart',
       component: ShoppingCart,
     },
+    {
+      path: '/notFound',
+      name: 'NotFound',
+      component: NotFound,
+    },
   ],
 });
+router.beforeEach((to, from, next) => {
+  if (!to.matched.length) {
+    next('/notFound');
+  } else {
+    next();
+  }
+});
+export default router;

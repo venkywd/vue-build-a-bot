@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     /* '@vue/airbnb', */
+    '@vue/airbnb',
    'plugin:vue/essential', '@vue/prettier'],
   plugins: ['prettier'],
   rules: {
