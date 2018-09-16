@@ -53,7 +53,7 @@ export default {
     console.log('*** lifecycle: beforeCreate');
   },
   created() {
-    this.$store.dispatch('getParts');
+    this.$store.dispatch('robots/getParts');
   },
   beforeMounted() {
     console.log('*** lifecycle: beforeMounte');
@@ -76,7 +76,7 @@ export default {
 
   computed: {
     availableParts() {
-      return this.$store.state.parts;
+      return this.$store.state.robots.parts;
     },
     saleBorderClass() {
       return this.selectedRobot.head.onSale ? 'sale-border' : '';
@@ -100,9 +100,9 @@ export default {
         robot.rightArm.cost +
         robot.base.cost;
       this.$store
-        .dispatch('addRobotToCart', { ...robot, cost })
-        .then(() => alert('item added to the cart!'));
-      // this.$store.commit('addRobotToCart', { ...robot, cost });
+        .dispatch('robots/addRobotToCart', { ...robot, cost })
+        .then(() => console.log('item added to the cart!'));
+      // this.$store.commit('addRobotToCart', { ...robot, cost }); // calls mutation
       // this.cart.push({ ...robot, cost });
       this.addedToCart = true;
     },
