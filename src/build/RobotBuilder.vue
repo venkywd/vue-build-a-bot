@@ -39,7 +39,8 @@ export default {
     };
   },
   components: { PartSelector, PreviewCart },
-  beforeRouteLeave(to, from, next) { // canDeactivate
+  // canDeactivate
+  beforeRouteLeave(to, from, next) {
     if (this.addedToCart) {
       next(true);
     } else {
