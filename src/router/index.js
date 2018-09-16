@@ -1,7 +1,7 @@
+import RobotBuilder from '@/build/RobotBuilder.vue';
 import Vue from 'vue';
 import Router from 'vue-router';
-import RobotBuilder from '../build/RobotBuilder.vue';
-import ShoppingCart from '../cart/ShoppingCart.vue';
+// import ShoppingCart from '../cart/ShoppingCart.vue';
 import HomePage from '../home/HomePage.vue';
 import NotFound from '../not-found/NotFound.vue';
 import BrowseParts from '../parts/BrowseParts.vue';
@@ -74,7 +74,12 @@ const router = new Router({
     {
       path: '/cart',
       name: 'Cart',
-      component: ShoppingCart,
+      // Eager Loaded
+      // component: ShoppingCart,
+      // Eager Loaded
+      // component: () => require('@/cart/ShoppingCart.vue').default,
+      // Lazy Loaded
+      component: () => import('@/cart/ShoppingCart.vue'),
     },
     {
       path: '/notFound',
