@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 // import availableParts from '../data/parts';
 import createdHookedMixin from './created-hook.mixin';
 import PartSelector from './PartSelector.vue';
@@ -53,7 +54,8 @@ export default {
     console.log('*** lifecycle: beforeCreate');
   },
   created() {
-    this.$store.dispatch('robots/getParts');
+    this.getParts(); // mapActions helper gives us this shortcut
+    // this.$store.dispatch('robots/getParts');
   },
   beforeMounted() {
     console.log('*** lifecycle: beforeMounte');
@@ -91,6 +93,7 @@ export default {
   },
 
   methods: {
+    ...mapActions('robots', ['getParts', 'addRobotToCart']),
     addToCart() {
       const robot = this.selectedRobot;
       const cost =
@@ -99,11 +102,18 @@ export default {
         robot.torso.cost +
         robot.rightArm.cost +
         robot.base.cost;
-      this.$store
-        .dispatch('robots/addRobotToCart', { ...robot, cost })
-        .then(() => console.log('item added to the cart!'));
+      // mapActions helper allows this shortcut
+      this.addRobotToCart({ ...robot, cost }).then(() =>
+        console.log('item added to the cart!')
+      );
+
+      // this.$store
+      //   .dispatch('robots/addRobotToCart', { ...robot, cost })
+      //   .then(() => console.log('item added to the cart!'));
+
       // this.$store.commit('addRobotToCart', { ...robot, cost }); // calls mutation
       // this.cart.push({ ...robot, cost });
+
       this.addedToCart = true;
     },
   },

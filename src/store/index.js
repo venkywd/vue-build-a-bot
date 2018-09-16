@@ -10,4 +10,12 @@ export default new Vuex.Store({
     robots: robotsModule,
     users: usersModule,
   },
+  state: {
+    foo: 'root-foo',
+  },
+  getters: {
+    foo(state) {
+      return `root-getter${state.foo}`;
+    },
+  },
 });
