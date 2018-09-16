@@ -7,7 +7,7 @@ export default {
     parts: null,
     foo: 'robots-foo',
   },
-  mutations: {
+  mutations: { // reducers
     addRobotToCart(state, robot) {
       state.cart.push(robot);
     },
@@ -31,7 +31,7 @@ export default {
         .catch(console.error);
     },
   },
-  getters: {
+  getters: { // selectors
     cartSaleItems(state) {
       return state.cart.filter(item => item.head.onSale);
     },

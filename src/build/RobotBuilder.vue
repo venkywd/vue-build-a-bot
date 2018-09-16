@@ -39,7 +39,7 @@ export default {
     };
   },
   components: { PartSelector, PreviewCart },
-  beforeRouteLeave(to, from, next) {
+  beforeRouteLeave(to, from, next) { // canDeactivate
     if (this.addedToCart) {
       next(true);
     } else {
@@ -102,17 +102,25 @@ export default {
         robot.torso.cost +
         robot.rightArm.cost +
         robot.base.cost;
-      // mapActions helper allows this shortcut
+      // 4. mapActions helper allows this shortcut
       this.addRobotToCart({ ...robot, cost }).then(() =>
         console.log('item added to the cart!')
       );
-
+      //
+      // 3. Now we use a dispatcher - this calls an action
       // this.$store
       //   .dispatch('robots/addRobotToCart', { ...robot, cost })
       //   .then(() => console.log('item added to the cart!'));
-
-      // this.$store.commit('addRobotToCart', { ...robot, cost }); // calls mutation
+      //
+      // 2. Calls the mutation directly, in the store
+      // this.$store.commit('addRobotToCart', { ...robot, cost });
+      //
+      // 1. This has not store at all
       // this.cart.push({ ...robot, cost });
+      //
+      // ----
+      // Work with me upwards here
+      // ----
 
       this.addedToCart = true;
     },

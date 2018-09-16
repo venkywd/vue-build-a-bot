@@ -18,4 +18,5 @@ export default function(element, binding) {
 //       element.style[key] = '5px';
 //     });
 //   },
+//   update: () ....
 // };
