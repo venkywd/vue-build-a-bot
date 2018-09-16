@@ -11,7 +11,7 @@ export default {
     addRobotToCart(state, robot) {
       state.cart.push(robot);
     },
-    udpateParts(state, parts) {
+    updateParts(state, parts) {
       state.parts = parts;
     },
   },
@@ -20,7 +20,7 @@ export default {
     getParts({ commit }) {
       axios
         .get('/api/parts')
-        .then(result => commit('udpateParts', result.data))
+        .then(result => commit('updateParts', result.data))
         .catch(console.error);
     },
     addRobotToCart({ commit, state }, robot) {
