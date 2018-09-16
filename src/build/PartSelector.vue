@@ -1,6 +1,5 @@
 <template>
   <div class="part" :class="position">
-    {{pinPadding}}
     <img :src="selectedPart.src" title="arm" @click="showPartInfo()" />
     <button @click="selectPreviousPart()" class="prev-selector"></button>
     <button @click="selectNextPart()" class="next-selector"></button>
