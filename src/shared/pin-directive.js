@@ -1,9 +1,15 @@
+function applyStyle(element, binding) {
+  element.style.position = 'absolute';
+  Object.keys(binding.value).forEach(property => {
+    element.style[property] = binding.value[property];
+  });
+}
 export default {
   bind: (element, binding) => {
-    element.style.position = 'absolute';
-    Object.keys(binding.value).forEach(property => {
-      element.style[property] = binding.value[property];
-    });
+    applyStyle(element, binding);
+  },
+  update: (element, binding) => {
+    applyStyle(element, binding);
   },
 };
 
