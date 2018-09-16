@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import RobotBuilder from '../build/RobotBuilder.vue';
+import ShoppingCart from '../cart/ShoppingCart.vue';
 import HomePage from '../home/HomePage.vue';
 import BrowseParts from '../parts/BrowseParts.vue';
 import PartInfo from '../parts/PartInfo.vue';
@@ -68,6 +69,11 @@ export default new Router({
         const isValidId = Number.isInteger(Number(to.params.id));
         next(isValidId);
       },
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: ShoppingCart,
     },
   ],
 });
