@@ -52,9 +52,20 @@ export default {
         rightArm: {},
         base: {},
       },
+      addedToCart: false,
     };
   },
   components: { PartSelector, PreviewCart },
+  beforeRouteLeave(to, from, next) {
+    if (this.addedToCart) {
+      next(true);
+    } else {
+      const response = confirm(
+        'you have not added your robot to your cart, are you sure you want to leave?'
+      );
+      next(response);
+    }
+  },
   mixins: [createdHookedMixin],
   beforeCreate() {
     console.log('*** lifecycle: beforeCreate');
@@ -87,15 +98,23 @@ export default {
     },
     headBorderStyle() {
       return {
-        border: this.selectedRobot.head.onSale ? '3px solid red' : '3px solid #aaa',
+        border: this.selectedRobot.head.onSale
+          ? '3px solid red'
+          : '3px solid #aaa',
       };
     },
   },
   methods: {
     addToCart() {
       const robot = this.selectedRobot;
-      const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost + robot.base.cost;
+      const cost =
+        robot.head.cost +
+        robot.leftArm.cost +
+        robot.torso.cost +
+        robot.rightArm.cost +
+        robot.base.cost;
       this.cart.push({ ...robot, cost });
+      this.addedToCart = true;
     },
   },
 };
