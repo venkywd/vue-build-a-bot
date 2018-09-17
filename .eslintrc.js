@@ -4,9 +4,10 @@ module.exports = {
     node: true
   },
   extends: [
-    /* '@vue/airbnb', */
     '@vue/airbnb',
-   'plugin:vue/essential', '@vue/prettier'],
+    'plugin:vue/essential',
+    '@vue/prettier'
+  ],
   plugins: ['prettier'],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
