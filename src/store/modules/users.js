@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export default {
+  strict: process.env.NODE_ENV !== 'production',
   namespaced: true,
   state: {
     user: null,

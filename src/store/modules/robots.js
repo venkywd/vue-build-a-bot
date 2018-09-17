@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 export default {
+  strict: process.env.NODE_ENV !== 'production',
   namespaced: true,
   state: {
     cart: [],
-    parts: null,
+    parts: [],
     foo: 'robots-foo',
   },
   // reducers
@@ -12,7 +13,7 @@ export default {
     addRobotToCart(state, robot) {
       state.cart.push(robot);
     },
-    updateParts(state, parts) {
+    getParts(state, parts) {
       state.parts = parts;
     },
   },
@@ -21,7 +22,7 @@ export default {
     getParts({ commit }) {
       axios
         .get('/api/parts')
-        .then(result => commit('updateParts', result.data))
+        .then(result => commit('getParts', result.data))
         .catch(console.error);
     },
     addRobotToCart({ commit, state }, robot) {

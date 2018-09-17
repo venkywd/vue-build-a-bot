@@ -1,57 +1,20 @@
 <template>
   <div>
     <h1>Cart</h1>
-    <table>
-      <thead>
-        <tr>
-          <th class="robot-title">
-            Robot
-          </th>
-          <th class="cost">
-            Cost
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(robot, index) in cart" :key="index">
-          <td class="robot-title">
-            {{robot.head.title}}
-          </td>
-          <td class="cost">
-            {{robot.cost | currency('$')}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <RobotList :items="cart" />
     <h2 class="sale-items">You saved money on these robots</h2>
-    <table>
-      <thead>
-        <tr>
-          <th class="robot-title">
-            Robot
-          </th>
-          <th class="cost">
-            Cost
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(robot, index) in cartSaleItems" :key="index">
-          <td class="robot-title">
-            {{robot.head.title}}
-          </td>
-          <td class="cost">
-            {{robot.cost | currency('$')}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <RobotList :items="cartSaleItems" />
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue';
+
+import RobotList from './RobotList.vue';
+
+export default Vue.extend({
   name: 'Cart',
+  components: { RobotList },
   computed: {
     cart() {
       return this.$store.state.robots.cart;
@@ -60,7 +23,7 @@ export default {
       return this.$store.getters['robots/cartSaleItems'];
     },
   },
-};
+});
 </script>
 
 <style scoped>

@@ -3,26 +3,28 @@
     <h1>Browse Parts</h1>
     <ul class="menu">
       <li>
-        <router-link :to="{name: 'BrowseHeads'}">Heads </router-link>
+        <router-link :to="{name: 'BrowseHeads'}" class="nav-link" exact>Heads </router-link>
       </li>
       <li>
-        <router-link :to="{name: 'BrowseArms'}">Arms </router-link>
+        <router-link :to="{name: 'BrowseArms'}" class="nav-link" exact>Arms</router-link>
       </li>
       <li>
-        <router-link :to="{name: 'BrowseTorsos'}">Torsos </router-link>
+        <router-link :to="{name: 'BrowseTorsos'}" class="nav-link" exact>Torsos</router-link>
       </li>
       <li>
-        <router-link :to="{name: 'BrowseBases'}">Bases </router-link>
+        <router-link :to="{name: 'BrowseBases'}" class="nav-link" exact>Bases</router-link>
       </li>
     </ul>
     <router-view></router-view>
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
   name: 'BrowseParts',
-};
+});
 </script>
 
 <style scoped>
@@ -40,5 +42,12 @@ ul {
 }
 a {
   color: palevioletred;
+}
+.nav-link {
+  text-decoration: none;
+  color: palevioletred;
+}
+.router-link-active {
+  color: #333;
 }
 </style>

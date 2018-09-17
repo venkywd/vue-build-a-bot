@@ -15,6 +15,11 @@
               Build
             </router-link>
           </li>
+          <li class="nav-item">
+            <router-link :to="{name: 'BrowseParts'}" class="nav-link" exact>
+              Parts
+            </router-link>
+          </li>
           <li class="nav-item cart">
             <router-link to="/cart" class="nav-link" exact>
               Cart
@@ -37,10 +42,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import { mapGetters, mapState } from 'vuex';
 
-export default {
+export default Vue.extend({
   name: 'app',
   computed: {
     cart() {
@@ -77,7 +83,7 @@ export default {
     //   return this.$store.getters['users/foo'];
     // },
   },
-};
+});
 </script>
 
 <style>

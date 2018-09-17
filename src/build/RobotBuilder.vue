@@ -1,5 +1,5 @@
 <template>
-  <div class="content" v-if="availableParts">
+  <div class="content" v-if="availableParts.heads">
     <PreviewCart :selectedRobot="selectedRobot" @addToCart="addToCart()" />
     <div class="top-row">
       <PartSelector :parts="availableParts.heads" position="top" @partSelected="part => selectedRobot.head = part" />
@@ -15,14 +15,15 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import { mapActions } from 'vuex';
-// import availableParts from '../data/parts';
+
 import createdHookedMixin from './created-hook.mixin';
 import PartSelector from './PartSelector.vue';
 import PreviewCart from './PreviewCart.vue';
 
-export default {
+export default Vue.extend({
   name: 'RobotBuilder',
   data() {
     return {
@@ -39,8 +40,8 @@ export default {
     };
   },
   components: { PartSelector, PreviewCart },
-  // canDeactivate
   beforeRouteLeave(to, from, next) {
+    // canDeactivate
     if (this.addedToCart) {
       next(true);
     } else {
@@ -126,7 +127,7 @@ export default {
       this.addedToCart = true;
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

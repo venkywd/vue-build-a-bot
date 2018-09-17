@@ -5,11 +5,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
+
 // import parts from '../data/parts';
 import getPartsMixin from './get-parts.mixin';
 
-export default {
+export default Vue.extend({
   name: 'PartInfo',
   mixins: [getPartsMixin],
   props: {
@@ -30,7 +32,7 @@ export default {
       return {};
     },
   },
-};
+});
 </script>
 
 <style scoped>
