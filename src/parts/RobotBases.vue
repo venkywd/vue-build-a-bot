@@ -9,16 +9,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-
+<script>
 import getPartsMixin from './get-parts.mixin';
 
-export default Vue.extend({
+export default {
   name: 'RobotBases',
   data() {
     return {};
   },
   mixins: [getPartsMixin],
-});
+};
 </script>

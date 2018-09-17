@@ -7,10 +7,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-
-export default Vue.extend({
+<script>
+export default {
   name: 'HomeWorld',
   props: {
     msg: String,
@@ -18,7 +16,7 @@ export default Vue.extend({
   created() {
     console.log(process.env.VUE_APP_TEST);
   },
-});
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

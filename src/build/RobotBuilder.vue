@@ -15,15 +15,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
+<script>
 import { mapActions } from 'vuex';
 
 import createdHookedMixin from './created-hook.mixin';
 import PartSelector from './PartSelector.vue';
 import PreviewCart from './PreviewCart.vue';
 
-export default Vue.extend({
+export default {
   name: 'RobotBuilder',
   data() {
     return {
@@ -115,10 +114,10 @@ export default Vue.extend({
       //   .then(() => console.log('item added to the cart!'));
       //
       // 2. Calls the mutation directly, in the store
-      // this.$store.commit('addRobotToCart', { ...robot, cost });
+      // this.$store.commit('addRobotToCart', { ...robot, cost };
       //
       // 1. This has not store at all
-      // this.cart.push({ ...robot, cost });
+      // this.cart.push({ ...robot, cost };
       //
       // ----
       // Work with me upwards here
@@ -127,7 +126,7 @@ export default Vue.extend({
       this.addedToCart = true;
     },
   },
-});
+};
 </script>
 
 <style lang="scss" scoped>

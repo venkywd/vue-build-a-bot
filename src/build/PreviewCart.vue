@@ -19,12 +19,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-
+<script>
 import CollapsibleSection from '@/shared/CollapsibleSection.vue';
 
-export default Vue.extend({
+export default {
   name: 'PreviewCart',
   props: {
     selectedRobot: { type: Object },
@@ -35,7 +33,7 @@ export default Vue.extend({
       this.$emit('addToCart', true);
     },
   },
-});
+};
 </script>
 
 <style lang="scss" scoped>

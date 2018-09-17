@@ -7,12 +7,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-
+<script>
 import RobotList from './RobotList.vue';
 
-export default Vue.extend({
+export default {
   name: 'Cart',
   components: { RobotList },
   computed: {
@@ -23,7 +21,7 @@ export default Vue.extend({
       return this.$store.getters['robots/cartSaleItems'];
     },
   },
-});
+};
 </script>
 
 <style scoped>

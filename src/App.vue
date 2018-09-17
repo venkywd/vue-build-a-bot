@@ -42,11 +42,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
+<script>
 import { mapGetters, mapState } from 'vuex';
 
-export default Vue.extend({
+export default {
   name: 'app',
   computed: {
     cart() {
@@ -83,7 +82,7 @@ export default Vue.extend({
     //   return this.$store.getters['users/foo'];
     // },
   },
-});
+};
 </script>
 
 <style>

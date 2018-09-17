@@ -7,9 +7,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-
+<script>
 function getPreviousValidIndex(index, length) {
   const deprecatedIndex = index - 1;
   return deprecatedIndex < 0 ? length - 1 : deprecatedIndex;
@@ -20,7 +18,7 @@ function getNextValidIndex(index, length) {
   return incrementedIndex > length - 1 ? 0 : incrementedIndex;
 }
 
-export default Vue.extend({
+export default {
   props: {
     parts: { type: Array, required: true },
     position: {
@@ -71,7 +69,7 @@ export default Vue.extend({
       );
     },
   },
-});
+};
 </script>
 
 <style scoped>
